@@ -1,4 +1,3 @@
-
 function guessZipCode(){
   // Skip geolookup until replaced with TWC (wunderground api dead)
   return;
@@ -91,24 +90,14 @@ function fetchForecast(){
           forecastNarrative[i] = n.narrative
           forecastPrecip[i] = `${n.pop}% Chance<br/> of ${n.precip_type.charAt(0).toUpperCase() + n.precip_type.substr(1).toLowerCase()}`
         }
-        // 7 day outlook
-        for (var i = 0; i < 7; i++) {
-          let fc = forecasts[i+1]
-          outlookHigh[i] = fc.max_temp
-          outlookLow[i] = fc.min_temp
-          outlookCondition[i] = (fc.day ? fc.day : fc.night).phrase_32char.split(' ').join('<br/>')
-          // thunderstorm doesn't fit in the 7 day outlook boxes
-          // so I multilined it similar to that of the original
-          outlookCondition[i] = outlookCondition[i].replace("Thunderstorm", "Thunder</br>storm");
-          outlookIcon[i] = (fc.day ? fc.day : fc.night).icon_code
-        }
+
         fetchRadarImages();
 
       })
     })
 }
 
-
+fetchRadarImages();
 
 function fetchCurrentWeather(){
 
@@ -199,9 +188,6 @@ function fetchCurrentWeather(){
 
 }
 
-
-
-
 function fetchRadarImages(){
   radarImage = document.createElement("iframe");
   radarImage.onerror = function () {
@@ -209,13 +195,9 @@ function fetchRadarImages(){
   }
 
 
-
   mapSettings = btoa(JSON.stringify({
     "agenda": {
-      "id": "weather",
       "center": [longitude, latitude],
-      "location": null,
-      "zoom": 10
     }
 
   }));
@@ -234,15 +216,10 @@ function fetchRadarImages(){
   
     mapSettings = btoa(JSON.stringify({
       "agenda": {
-        "id": "weather",
         "center": [longitude, latitude],
-        "location": null,
-        "zoom": 10
       }
     }));
   }
-
-
 
 
   scheduleTimeline();
@@ -306,7 +283,7 @@ function addRasterLayer(map, interval, opacity = 0) {
 		type: 'raster',
 		tiles: [1, 2, 3, 4].map((s) => getTilePath(s, interval)),
 		tileSize: TILE_SIZE,
-		attribution: '<a href="https://www.aerisweather.com/">Xweather</a>'
+
 	});
 	map.addLayer({
 		id, 
@@ -345,7 +322,7 @@ map.on('load', () => {
 
 	// wait time determines how long to wait and allow frames to load before
 	// beginning animation playback
-	const waitTime = 0;
+	const waitTime = 10000;
 
 	// step time determines the time in milliseconds each frame holds before advancing
 	const stepTime = 1000;
@@ -375,17 +352,4 @@ map.setView(e.latlng, map.getZoom(), {
  
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
