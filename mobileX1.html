@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=660,user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta http-equiv="Permissions-Policy" content="interest-cohort=()">	
@@ -35,6 +35,7 @@
   <script src="js/ConditionsX1.js"></script>
   <script src="js/InformationSettingX1.js"></script>
   
+  <script src="js/onclick.js"></script>
 
   <link rel="preload" href="/fonts/akkopro-light.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/fonts/akkopro-thin.otf" as="font" type="font/ttf" crossorigin>
@@ -43,124 +44,7 @@
 
 
 
-<script>
 
-function airports() {
-
-  localStorage.setItem('loop', 'n');
-  CONFIG.loop = false;
-  
-  window.parent.location.href= 'airports.html';
-
-}
-
-</script>
-
-
-
-
-<script>
-
-function zipcodes() {
-
-  localStorage.setItem('loop', 'n');
-  CONFIG.loop = false;
-  
-  window.parent.location.href= 'zipcodes.html';
-
-}
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-
-function radaralerts() {
-
-  localStorage.setItem('loop', 'y');
-  CONFIG.loop = true;
-  
-  window.parent.location.href= 'MobileTrimble.html';
-
-}
-
-</script>
-
-
-<script>
-
-function radarfull() {
-
-  localStorage.setItem('loop', 'y');
-  CONFIG.loop = true;
-  
-  window.parent.location.href= 'MobileMapBox.html';
-
-}
-
-</script>
-
-
-
-<script>
-function nws() {
-
-  localStorage.setItem('loop', 'n');
-  CONFIG.loop = false;
-  location.href = "fullscrn.html";
-}
-
-</script>
-
-
-
-
-<script>
-function mapbox() {
-
-  localStorage.setItem('loop', 'y');
-  CONFIG.loop = true;
-  location.href = "mapbox.html";
-}
-
-</script>
-
-
-
-
-
-
-<script>
-function intellistar() {
-
-  localStorage.setItem('loop', 'n');
-  CONFIG.loop = false;
-
-  window.location.reload();
-}
-</script>
-
-
-	
 <body>
 
   <div id="render-frame">
