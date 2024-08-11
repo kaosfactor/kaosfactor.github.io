@@ -87,44 +87,9 @@ window.CONFIG = {
   },
   load: () => {
     let settingsPrompt = getElement('settings-prompt')
-    let advancedSettingsOptions = getElement('advanced-settings-options')
 
-    //Advanced Options Setup
-    CONFIG.options.forEach((option) => {
-      //<div class="regular-text settings-item settings-text">Zip Code</div>
-      let label = document.createElement('div')
-        label.classList.add('strong-text', 'settings-item', 'settings-text', 'settings-padded')
-        label.style.textAlign='left'
-      label.appendChild(document.createTextNode(option.name))
-      label.id = `${option.id}-label`
-      //<input class="settings-item settings-text" type="text" id="zip-code-text">
-      let textbox = document.createElement('textarea')
-      textbox.classList.add('settings-item', 'settings-text', 'settings-input')
-      textbox.type = 'text'
-      textbox.style.fontSize = '20px'
-      textbox.placeholder = option.desc
-      textbox.id = `${option.id}-text`
-      textbox.style.maxWidth='320px'
-      textbox.style.minWidth='320px'
-      textbox.style.height='100px'
-      textbox.style.marginTop='10px'
-      if (localStorage.getItem(option.id)) textbox.value = localStorage.getItem(option.id)
-      let br = document.createElement('br')
-      advancedSettingsOptions.appendChild(label)
-      advancedSettingsOptions.appendChild(textbox)
-      advancedSettingsOptions.appendChild(br)
-      //<br>
-    })
 
-    let advancedButtonContainer = document.createElement('div')
-    advancedButtonContainer.classList.add('settings-container')
-    settingsPrompt.appendChild(advancedButtonContainer)
-    let advancedButton = document.createElement('button')
-    advancedButton.innerHTML = "Show advanced options"
-    advancedButton.id = "advanced-options-text"
-    advancedButton.setAttribute('onclick', 'toggleAdvancedSettings()')
-    advancedButton.classList.add('regular-text', 'settings-input', 'button')
-    advancedButtonContainer.appendChild(advancedButton)
+
     //<button class="setting-item settings-text" id="submit-button" onclick="checkZipCode();" style="margin-bottom: 10px;">Start</button>-->
     let btn = document.createElement('button')
     btn.classList.add('setting-item', 'settings-text', 'settings-input', 'button')

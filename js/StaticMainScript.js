@@ -1,15 +1,5 @@
 
 
-
-// Preset timeline sequences
-const MORNING = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 12000}]},{name: "Today", subpages: [{name: "today-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "7day-page", duration: 10000}]},]
-const NIGHT = [{name: "Now", subpages: [{name: "current-page", duration: 9000}, {name: "radar-page", duration: 12000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "tomorrow-night-page", duration: 10000}, {name: "7day-page", duration: 10000}]},]
-const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 12000}, {name: "zoomed-radar-page", duration: 11000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 10000}]},]
-const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 12000}, {name: "zoomed-radar-page", duration: 11000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 10000}]},]
-const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
-
-
-
 window.onload = function () {
 
   CONFIG.addLocationOption('airport-code', 'Airport', 'ATL or KATL')
@@ -20,7 +10,7 @@ window.onload = function () {
   //preLoadMusic();
   setMainBackground();
   resizeWindow();
-  setClockTime();
+  //setClockTime();
   if (!CONFIG.loop) {
     getElement("settings-container").style.display = 'block';
     guessZipCode();
@@ -28,15 +18,10 @@ window.onload = function () {
 }
 
 
-
-
-
-
 function scheduleTimeline(){
 
   setInformation();
 }
-
 
 function setInformation(){
 
@@ -56,9 +41,6 @@ function hideSettings(){
 }
 
 
-function setClockTime(){
-
-}
 
 const baseSize = {
     w: 1,

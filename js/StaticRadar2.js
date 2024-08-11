@@ -1,17 +1,12 @@
 function guessZipCode(){
-  // Skip geolookup until replaced with TWC (wunderground api dead)
+
   return;
 
   var zipCodeElement = getElement("zip-code-text");
-  // Before filling with auto zip, check and see if
-  // there is already an input
   if(zipCodeElement.value != ""){
     return;
   }
 
-  // always use wunderground API for geolookup
-  // only valid equivalent is GET v3/location/search
-  // TODO: use TWC API GET v3/location/search instead of wunderground geolookup
   fetch(`https://api.wunderground.com/api/${CONFIG.secrets.wundergroundAPIKey}/geolookup/q/autoip.json`)
     .then(function(response) {
       //check for error
@@ -19,12 +14,12 @@ function guessZipCode(){
         console.log("zip code request error");
         return;
       }
+
       response.json().then(function(data) {
-        // Only fill zip if the user didn't touch
-        // the box while the zip was fetching
         if(zipCodeElement.value == ""){
           zipCodeElement.value = data.location.zip;
         }
+
       });
     })
 }
@@ -90,17 +85,7 @@ function fetchForecast(){
           forecastNarrative[i] = n.narrative
           forecastPrecip[i] = `${n.pop}% Chance<br/> of ${n.precip_type.charAt(0).toUpperCase() + n.precip_type.substr(1).toLowerCase()}`
         }
-        // 7 day outlook
-        for (var i = 0; i < 7; i++) {
-          let fc = forecasts[i+1]
-          outlookHigh[i] = fc.max_temp
-          outlookLow[i] = fc.min_temp
-          outlookCondition[i] = (fc.day ? fc.day : fc.night).phrase_32char.split(' ').join('<br/>')
-          // thunderstorm doesn't fit in the 7 day outlook boxes
-          // so I multilined it similar to that of the original
-          outlookCondition[i] = outlookCondition[i].replace("Thunderstorm", "Thunder</br>storm");
-          outlookIcon[i] = (fc.day ? fc.day : fc.night).icon_code
-        }
+
         fetchRadarImages();
       })
     })
@@ -144,8 +129,6 @@ function fetchCurrentWeather(){
           }
       response.json().then(function(data) {
         try {
-          // which LOCALE?!
-          //Not sure about the acuracy of this. Remove this if necessary
           if(CONFIG.locationMode=="AIRPORT"){
             cityName = data.location.airportName
             .toUpperCase() //Airport names are long
@@ -201,43 +184,8 @@ function fetchRadarImages(){
     getElement('radar-container').style.display = 'none';
   }
 
-  mapSettings = btoa(JSON.stringify({
-    "agenda": {
-      "id": "weather",
-      "center": [longitude, latitude],
-      "location": null,
-      "zoom": 10
-    }
-  }));
-  
-
-  
-  if(alertsActive){
-    zoomedRadarImage = new Image();
-    zoomedRadarImage.onerror = function () {
-      getElement('zoomed-radar-container').style.display = 'none';
-    }
-
-    zoomedRadarImage = document.createElement("iframe");
-    zoomedRadarImage.onerror = function () {
-      getElement('zoomed-radar-container').style.display = 'none';
-    }
-  
-    mapSettings = btoa(JSON.stringify({
-      "agenda": {
-        "id": "weather",
-        "center": [longitude, latitude],
-        "location": null,
-        "zoom": 10
-      }
-    }));
-    
-
-  }
 
 scheduleTimeline();
-
-
 
 
 		alk.defaults.setApiKey('17CA0885B03A6B4FADBDC3D1A51DC0BD');
