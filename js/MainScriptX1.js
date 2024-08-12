@@ -117,8 +117,8 @@ function startAnimation(){
   setInitialPositionCurrentPage();
 
   //jingle.play();
-  setTimeout(startJingle, 500)
-  setTimeout(startMusic, 6000)
+  setTimeout(startJingle, 1000)
+  setTimeout(startMusic, 6500)
   executeGreetingPage();
 }
 
