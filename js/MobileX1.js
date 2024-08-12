@@ -236,7 +236,7 @@ function fetchRadarImages(){
 
   scheduleTimeline();
   //startRadar();
-  setTimeout(startRadar, 1500);
+  setTimeout(startRadar, 1600);
   //startZoomedRadar();
   setTimeout(startZoomedRadar, 9000);
 
