@@ -8,7 +8,7 @@ window.onload = function () {
 
   CONFIG.load();
   //preLoadMusic();
-  setMainBackground();
+  //setMainBackground();
   resizeWindow();
   //setClockTime();
   if (!CONFIG.loop) {
@@ -29,9 +29,9 @@ function setInformation(){
 
 }
 
-function setMainBackground(){
-  getElement('background-image');
-}
+//function setMainBackground(){
+//  getElement('background-image');
+//}
 
 function hideSettings(){
   // Animate settings prompt out
