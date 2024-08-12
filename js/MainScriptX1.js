@@ -18,6 +18,7 @@ var currentLogoIndex = 0;
 var pageOrder;
 var music;
 
+
 window.onload = function () {
 
   CONFIG.addLocationOption('airport-code', 'Airport', 'ATL or KATL')
@@ -84,9 +85,27 @@ function setInformation(){
   setTimeout(startAnimation, 5000);
 }
 
+//function setMainBackground(){
+//  getElement('background-image').style.backgroundImage = 'url(https://picsum.photos/1920/1080/?random)';
+//}
+
+//function setMainBackground(){
+//  getElement('background-image').style.backgroundImage = 'url(https://localhost:3001/images/1.jpg)';
+//}
+
+
+      var randombgs = ['images/1.jpg', 'images/2.jpg', 'images/3.jpg'];
+      let randNum = Math.floor(Math.random()*randombgs.length);
+      let randSelect = "\'" + randombgs[randNum] + "\'";
+      console.log(randSelect);
+
+
 function setMainBackground(){
-  getElement('background-image').style.backgroundImage = 'url(https://picsum.photos/1920/1080/?random';
+  getElement('background-image').style.backgroundImage = 'url(' + randSelect + ')';
 }
+
+
+
 
 function checkStormMusic(){
   if(currentCondition.toLowerCase().includes("storm")){
