@@ -204,25 +204,6 @@ function fetchRadarImages(){
 
   mapSettings = btoa(JSON.stringify({
     "agenda": {
-      "id": "weather",
-      "center": [longitude, latitude],
-      "location": null,
-      "zoom": 8
-    },
-    "animating": true,
-    "base": "standard",
-    "artcc": false,
-    "county": false,
-    "cwa": false,
-    "rfc": false,
-    "state": false,
-    "menu": false,
-    "shortFusedOnly": false,
-    "opacity": {
-      "alerts": 0.4,
-      "local": 0.0,
-      "localStations": 0.0,
-      "national": 0.9
     }
   }));
   radarImage.setAttribute("src", "staticradar1.html");
@@ -244,25 +225,6 @@ function fetchRadarImages(){
   
     mapSettings = btoa(JSON.stringify({
       "agenda": {
-        "id": "weather",
-        "center": [longitude, latitude],
-        "location": null,
-        "zoom": 10
-      },
-      "animating": true,
-      "base": "standard",
-      "artcc": false,
-      "county": false,
-      "cwa": false,
-      "rfc": false,
-      "state": false,
-      "menu": false,
-      "shortFusedOnly": false,
-      "opacity": {
-        "alerts": 0.0,
-        "local": 0.0,
-        "localStations": 0.0,
-        "national": 0.9
       }
     }));
     zoomedRadarImage.setAttribute("src", "staticradar2.html");
