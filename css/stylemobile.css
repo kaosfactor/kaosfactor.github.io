@@ -22,7 +22,7 @@ body{
   margin-top: -540px;
   width: 1920px;
   height: 1080px;
-  transform-origin: 50% 50%;
+
 
   background-image: url("/images/kaos3.gif");
   background-repeat:no-repeat;
@@ -58,7 +58,7 @@ body{
 }
 
 #content-container.expand{
-  transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s;
+
   left: 0px;
   top: 0px;
   width: 100%;
@@ -66,7 +66,6 @@ body{
 }
 
 #content-container.above-screen{
-  transition: top 400ms;
-  transition-timing-function: linear;
+
   top: -100%;
 }
