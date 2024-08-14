@@ -82,7 +82,7 @@ function setInformation(){
   setCurrentConditions();
   setTimelineEvents();
   hideSettings();
-  setTimeout(startAnimation, 10000);
+  setTimeout(startAnimation, 12000);
 }
 
 //function setMainBackground(){
