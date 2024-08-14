@@ -39,8 +39,7 @@ body{
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
-  transition: top 300ms, height 300ms;
-  transition-timing-function: linear;
+
 }
 
 #content-container.shown{
