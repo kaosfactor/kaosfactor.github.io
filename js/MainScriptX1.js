@@ -225,7 +225,7 @@ function executePage(pageIndex, subPageIndex){
     animateValue('cc-temperature-text', -20, currentTemperature, 2500, 1);
     animateDialFill('cc-dial-color', currentTemperature, 2500);
 
-    setTimeout(startRadar, 8000);
+    setTimeout(startRadar, 9000);
     setTimeout(startZoomedRadar, 11000);
 
   }
