@@ -1,5 +1,5 @@
-const MORNING = [{name: "Now", subpages: [{name: "current-page", duration: 14000}, {name: "radar-page", duration: 12000}]},{name: "Today", subpages: [{name: "today-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "7day-page", duration: 10000}]},]
-const NIGHT = [{name: "Now", subpages: [{name: "current-page", duration: 14000}, {name: "radar-page", duration: 12000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "tomorrow-night-page", duration: 10000}, {name: "7day-page", duration: 10000}]},]
+const MORNING = [{name: "Now", subpages: [{name: "current-page", duration: 16000}, {name: "radar-page", duration: 12000}]},{name: "Today", subpages: [{name: "today-page", duration: 10000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "7day-page", duration: 10000}]},]
+const NIGHT = [{name: "Now", subpages: [{name: "current-page", duration: 16000}, {name: "radar-page", duration: 12000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 10000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 10000}, {name: "tomorrow-night-page", duration: 10000}, {name: "7day-page", duration: 10000}]},]
 const SINGLE = [{name: "Alert", subpages: [{name: "single-alert-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 12000}, {name: "zoomed-radar-page", duration: 11000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 10000}]},]
 const MULTIPLE = [{name: "Alerts", subpages: [{name: "multiple-alerts-page", duration: 7000}]},{name: "Now", subpages: [{name: "current-page", duration: 8000}, {name: "radar-page", duration: 12000}, {name: "zoomed-radar-page", duration: 11000}]},{name: "Tonight", subpages: [{name: "tonight-page", duration: 8000}]},{name: "Beyond", subpages: [{name: "tomorrow-page", duration: 8000}, {name: "7day-page", duration: 10000}]},]
 const WEEKDAY = ["SUN",  "MON", "TUES", "WED", "THU", "FRI", "SAT"];
@@ -224,8 +224,8 @@ function executePage(pageIndex, subPageIndex){
     animateValue('cc-temperature-text', -20, currentTemperature, 2500, 1);
     animateDialFill('cc-dial-color', currentTemperature, 2500);
 
-    setTimeout(startRadar, 8500);
-    setTimeout(startZoomedRadar, 11000);
+    setTimeout(startRadar, 6800);
+    setTimeout(startZoomedRadar, 15000);
 
   }
   else if(currentSubPageName == 'radar-page'){
