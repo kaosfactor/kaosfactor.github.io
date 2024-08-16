@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Xweather Raster Maps - Mapbox Example</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+ 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.js"></script>
+
+</head>
+<body>
+
+<div id="map" class="mapboxgl-map"><div class="mapboxgl-canvas-container mapboxgl-interactive"><canvas class="mapboxgl-canvas" style="position: absolute; width: 832px; height: 400px;" tabindex="0" width="832" height="400"></canvas></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-bottom-left"></div><div class="mapboxgl-ctrl-bottom-right"><div class="mapboxgl-ctrl mapboxgl-ctrl-attrib"><a href="https://www.xweather.com/">Xweather</a> | <a href="https://www.mapbox.com/about/maps/" target="_blank" title="Mapbox" aria-label="Mapbox">© Mapbox</a> <a href="https://www.openstreetmap.org/about/" target="_blank" title="OpenStreetMap" aria-label="OpenStreetMap">© OpenStreetMap</a> <a class="mapbox-improve-map" href="https://www.mapbox.com/map-feedback/#/-99.88859775910878/42.90409886036434/3" target="_blank" title="Improve this map" aria-label="Improve this map">Improve this map</a></div></div></div></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaHdsZWVoMiIsImEiOiJjaWxqbXZyYjU0emo3dmFtY250eWhsNXBjIn0.7q_xKPH9QyOVfoCKxIqNwA';
+    var tileset = 'mapbox.streets';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v8',
+        center: [-95.7, 37.1], // starting position
+        zoom: 3 // starting zoom
+    });
+    map.on('load', function () {
+        map.addSource('xweather-radar', {
+            "type": 'raster',
+            "tiles": [
+                'https://maps.api.xweather.com/wgE96YE3scTQLKjnqiMsv_isbW1aBfUFyGIGjCawgmU1D3PvPIs0mb0VF9aKm0/radar/{z}/{x}/{y}/current.png',
+            ],
+            "tileSize": 256,
+            "attribution": "<a href='https://www.xweather.com/'>Xweather</a>"
+        });
+        map.addLayer({
+            "id": "radar-tiles",
+            "type": "raster",
+            "source": "xweather-radar",
+            "minzoom": 0,
+            "maxzoom":22
+        });
+    });
+</script>
+
+</body></html>
