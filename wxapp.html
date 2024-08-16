@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="viewport" content="width=660,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<script defer src="https://cdn.aerisapi.com/sdk/js/1.8.0/aerisweather.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.aerisapi.com/sdk/js/1.8.0/aerisweather.css">
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>		
+	
+<div id="map"></div>	
+
+<script>	 
+window.addEventListener('load', () => { 
+		
+	const aeris = new AerisWeather('wgE96YE3scTQLKjnqiMsv', 'SVG2gQFV8y9DjKR0BRY9wPoSLvrMrIqF9Lq2IYaY');	
+	const utils = aeris.utils;
+
+	aeris.apps().then((apps) => {
+		const app = new apps.InteractiveMapApp(document.getElementById('map'), {
+            map: {
+                strategy: "mapbox",
+                accessToken: "pk.eyJ1IjoiYmxhcmsiLCJhIjoiY2plaGZmaGR1MGZ3cTJ3bzZ6OHp5OGZzYyJ9.5dVrsWJk208YPShD-0HLsQ",
+                zoom: 6.3938447286996505,
+                center: {
+                    lat: 38.4343,
+                    lon: -77.4464
+                },
+                timeline: {
+                    from: -10800,
+                    to: 0
+                }
+            },
+            panels: {
+                layers: {
+                    buttons: [{
+                            title: "Radar",
+                            value: "radar"
+                        },{
+                            title: "Lightning All",
+                            value: "lightning-all"
+                        },{
+                            title: "Alerts",
+                            value: "alerts"
+                        },{
+                            title: "Temperatures - Text",
+                            value: "temperatures-text"
+                        },{
+                            title: "Dew Points - Text",
+                            value: "dew-points-text"
+                        },{
+                            title: "Humidity - Text",
+                            value: "humidity-text"
+                        },{
+                            title: "Wind Speeds - Text",
+                            value: "wind-speeds-text"
+                        },{
+                            title: "Surface Fronts",
+                            value: "surface-analysis-fronts"
+                        },{
+                            title: "Surface Analysis",
+                            value: "surface-analysis"
+                        },{
+                            title: "Surface Pressure - Text",
+                            value: "surface-analysis-pressure-text"
+                        },{
+                            title: "Stormcells",
+                            value: "stormcells"
+                        },{
+                            title: "Storm Reports",
+                            value: "stormreports"
+                        },{
+                            title: "Satellite - Infrared (Color)",
+                            value: "satellite-infrared-color"
+                        },{
+                            title: "Tropical Cyclones",
+                            value: "tropical-cyclones"
+                        },{
+                            title: "Tropical Cyclones - Forecast Icons",
+                            value: "tropical-cyclones-forecast-point-icons"
+                        },{
+                            title: "Tropical Cyclones - Breakpoints",
+                            value: "tropical-cyclones-break-points"
+                        }],
+                    enabled: true,
+                    toggleable: true,
+                    position: {
+                        pin: "topright",
+                        translate: {
+                            x: -10,
+                            y: 10
+                        }
+                    }
+                },
+                timeline: {
+                    enabled: true,
+                    toggleable: true,
+                    position: {
+                        pin: "bottom",
+                        translate: {
+                            x: 0,
+                            y: -10
+                        }
+                    }
+                },
+                search: {
+                    enabled: false,
+                    toggleable: true,
+                    position: {
+                        pin: "top",
+                        translate: {
+                            x: -300,
+                            y: 10
+                        }
+                    }
+                },
+                legends: {
+                    enabled: true,
+                    toggleable: true,
+                    position: {
+                        pin: "bottomright",
+                        translate: {
+                            x: -10,
+                            y: -10
+                        }
+                    }
+                },
+                info: {
+                    enabled: true,
+                    position: {
+                        pin: "topleft",
+                        translate: {
+                            x: 10,
+                            y: 10
+                        }
+                    },
+                    metric: false
+                }
+            }
+        });
+		
+		app.on('ready', () => {
+			// configure views for local weather info panel
+			app.panels.info.setContentView('localweather', {
+                views: [{
+                        renderer: "place"
+                    },{
+                        renderer: "alerts"
+                    },{
+                        renderer: "threats"
+                    },{
+                        renderer: "obs"
+                    },{
+                        renderer: "outlook"
+                    },{
+                        renderer: "forecast"
+                    }]
+            });
+		
+			// show info panel for location when map is clicked
+			app.map.on('click', (e) => {
+				app.showInfoAtCoord(e.data.coord, 'localweather', 'Local Weather');
+			});
+
+			// select initial layers
+			app.map.addLayers(['radar']);
+
+			// start playing the map animation
+			app.map.timeline.play();
+		});
+		
+		
+	});			
+});
+</script>	
+
+</body>
+</html>
