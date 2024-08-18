@@ -195,7 +195,7 @@ scheduleTimeline();
         const NUM_COLORS = "256"; // set to empty string for true color png
         const layers = [
             // add more layers!
-            "radar-global"
+            "radar"
         ];
 
         function getTileServer(stepNumber, layers, opacity = 0) {
