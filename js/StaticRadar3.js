@@ -192,7 +192,7 @@ scheduleTimeline();
         const endMinutes = 0;
         const AERIS_ID = "wgE96YE3scTQLKjnqiMsv";
         const AERIS_KEY = "SVG2gQFV8y9DjKR0BRY9wPoSLvrMrIqF9Lq2IYaY";
-        const NUM_COLORS = "256"; // set to empty string for true color png
+        const NUM_COLORS = "32"; // set to empty string for true color png
         const layers = [
             // add more layers!
             "radar"
