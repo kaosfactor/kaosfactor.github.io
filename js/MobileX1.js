@@ -227,7 +227,7 @@ function fetchRadarImages(){
       "agenda": {
       }
     }));
-    zoomedRadarImage.setAttribute("src", "staticradarX.html");
+    zoomedRadarImage.setAttribute("src", "staticradar2.html");
     zoomedRadarImage.style.width = "1230px"
     zoomedRadarImage.style.height = "740px"
     zoomedRadarImage.style.marginTop = "-90px"
