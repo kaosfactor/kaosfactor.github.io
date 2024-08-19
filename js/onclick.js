@@ -52,7 +52,7 @@ function nws() {
 
   localStorage.setItem('loop', 'n');
   CONFIG.loop = false;
-  location.href = "fullscrn.html";
+  location.href = "mobilefullscrn.html";
 }
 
 
