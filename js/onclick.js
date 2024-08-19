@@ -59,7 +59,6 @@ function nws() {
 
 
 
-
 function mapbox() {
 
   localStorage.setItem('loop', 'y');
@@ -68,6 +67,14 @@ function mapbox() {
 }
 
 
+
+
+function twc() {
+
+  localStorage.setItem('loop', 'y');
+  CONFIG.loop = true;
+  location.href = "staticradarX.html";
+}
 
 
 
