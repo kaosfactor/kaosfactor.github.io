@@ -14,6 +14,17 @@
     </head>
 <body>
 
+
+
+
+<!-- Load the `mapbox-gl-geocoder` plugin. -->
+//<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+//<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
+
+
+
+
 <style>
 body {
     margin: 0;
@@ -48,9 +59,29 @@ p {
 
 
 
+#menu a:last-child {
+    border: none;
+}
+
+#menu a:hover {
+    background-color: #f8f8f8;
+    color: #404040;
+}
 
 
 
+
+
+
+#features {
+    top: 60px;
+    height: 35px;
+    margin-top: 35px;
+    margin-right: 10px;
+
+    width: 80px;
+
+}
 
 
 
@@ -59,7 +90,7 @@ p {
 /*    background: #fff;
 */    position: absolute;
     z-index: 1;
-    top: 10px;
+    top: 60px;
     right: -40px;
     
 /*    border-radius: 3px;
@@ -76,29 +107,12 @@ p {
 
 
 
-#menu a:last-child {
-    border: none;
-}
-
-#menu a:hover {
-    background-color: #f8f8f8;
-    color: #404040;
-}
 
 
 
 
 
 
-#features {
-    top: 10px;
-    height: 35px;
-    margin-top: 35px;
-    margin-right: 10px;
-
-    width: 80px;
-
-}
 
 
 
@@ -328,6 +342,26 @@ function getTilePath(server, interval) {
 	
 	
 	});
+	
+	
+
+
+    // Add the control to the map.
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+    );
+
+
+
+
+
+
+
+	
+	
         var zips_tiles = {
             'ac-zips': {
                 'source-layer': 'ac-b0n2k5',
