@@ -187,64 +187,21 @@ function fetchRadarImages(){
 
 scheduleTimeline();
 
-        const frameCount = 1; // total intervals
-        const startMinutes = -0; // start time offset relative to now, where negative means past
-        const endMinutes = 0;
-        const AERIS_ID = "wgE96YE3scTQLKjnqiMsv";
-        const AERIS_KEY = "SVG2gQFV8y9DjKR0BRY9wPoSLvrMrIqF9Lq2IYaY";
-        const NUM_COLORS = "32"; // set to empty string for true color png
-        const layers = [
-            // add more layers!
-            "radar"
-        ];
 
-        function getTileServer(stepNumber, layers, opacity = 0) {
-            const interval = (endMinutes - startMinutes) / frameCount;
-            const timeOffset = startMinutes + interval * stepNumber;
-            const layerStr = layers.join(",");
-            const url = `https://maps{s}.aerisapi.com/${AERIS_ID}_${AERIS_KEY}/${layerStr}/{z}/{x}/{y}/${timeOffset}min.png${NUM_COLORS}`;
-            return L.tileLayer(url, {
-                subdomains: "1234",
-                //attribution: "&copy;AerisWeather",
-                opacity: .60
+
+            TrimbleMaps.APIKey = '17CA0885B03A6B4FADBDC3D1A51DC0BD';
+            const map = new TrimbleMaps.Map({
+                container: 'map', // container id
+                style: TrimbleMaps.Common.Style.TRANSPORTATION, // hosted style id
+                center: [-98.38, 38.69], // starting position
+                zoom: 3 // starting zoom
             });
-        }
+
+        
+                map.setWeatherRadarVisibility(true);
+   
 
 
-            map = L.map("map", { zoomControl: false }).setView([39.148, -76.478], 8);
-
-            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                //attribution: "&copy; OpenStreetMap contributors"
-            }).addTo(map);
-
-            const frames = [];
-            const waitTime = 000;
-            const stepTime = 000;
-            let currentOffset = 0;
-            let previousOffset = currentOffset;
-
-            for (let i = 0; i < frameCount; i += 1) {
-                const opacity = i === 0 ? 1 : 0;
-                frames.push(getTileServer(i, layers, opacity).addTo(map));
-            }
-
-            for (var i = 0; i < facilities.length; i++) {
-                marker = new L.marker([facilities[i][1], facilities[i][2]])
-                    .bindPopup(facilities[i][0])
-                    .addTo(map);
-            }
-
-            setTimeout(() => {
-                setInterval(() => {
-                    previousOffset = currentOffset;
-                    currentOffset += 1;
-                    if (currentOffset === frames.length - 1) {
-                        currentOffset = 0;
-                    }
-                    frames[previousOffset].setOpacity(0);
-                    frames[currentOffset].setOpacity(1);
-                }, stepTime);
-            }, waitTime);
 
 
 
