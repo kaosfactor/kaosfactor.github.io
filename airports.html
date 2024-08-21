@@ -57,7 +57,7 @@ body { margin: 0; padding: 0; }
 
 
 const frameCount = 10; // total intervals
-const startMinutes = -180; // start time offset relative to now, where negative means past
+const startMinutes = -60; // start time offset relative to now, where negative means past
 const endMinutes = 0;
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiYmxhcmsiLCJhIjoiY2plaGZmaGR1MGZ3cTJ3bzZ6OHp5OGZzYyJ9.5dVrsWJk208YPShD-0HLsQ';
@@ -349,7 +349,7 @@ map.on('load', () => {
 
 	// wait time determines how long to wait and allow frames to load before
 	// beginning animation playback
-	const waitTime = 100;
+	const waitTime = 1000;
 
 	// step time determines the time in milliseconds each frame holds before advancing
 	const stepTime = 400;
