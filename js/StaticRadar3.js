@@ -193,8 +193,8 @@ scheduleTimeline();
             const map = new TrimbleMaps.Map({
                 container: 'map', // container id
                 style: TrimbleMaps.Common.Style.TRANSPORTATION, // hosted style id
-                center: [-98.38, 38.69], // starting position
-                zoom: 3 // starting zoom
+                center: [longitude, latitude], // starting position
+                zoom: 7 // starting zoom
             });
 
         
