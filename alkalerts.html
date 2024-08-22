@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather Alerts Layer Example | Trimble Maps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maps-sdk.trimblemaps.com/v1/css/examples.min.css">
+  <script src="https://maps-sdk.trimblemaps.com/v1/alkmaps-1.2.3.js"></script>
+
+
+
+
+
+  <style>
+    .customLegend {
+      /*  main class for your custom legend control  */
+      display: block;
+      right: 5px;
+      bottom: 5px;
+      height: 85px;
+      width: 25%;
+      float: left;
+      border-color: #ddd;
+      background-color: #fff;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+      position:fixed;
+    }
+
+    .customLegend-header {
+      /*  add '-header' to specify the style of the legend header  */
+      color: #fff;
+      background-color: #4f5357;
+      border-color: #ddd;
+      padding: 0px 0px;
+      border-bottom: 1px solid transparent;
+      visibility: hidden;
+    }
+
+    .customLegend-header .title {
+      /* adding the '.title' class will allow you to specify the style of the title text */
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 0px;
+      font-weight: bold;
+      visibility: hidden;
+    }
+
+    .customLegend-body {
+      /* add '-body' to specify the style of the legend body */
+      overflow-y: auto;
+      max-height: 81px;
+      border: 1px solid #ccc;
+      padding: 0px;
+    }
+
+    .customLegend-body p {
+      /* add '-body p' to specify the style of the individual legends for each alert type */
+      margin: 0 0 10px;
+      border: 5px solid #ccc;
+      margin-bottom: 0px;
+      font-size: 0px;
+      
+      line-height: 12px;
+    }
+
+    .customOption {
+      /* main class for your custom option control */
+      display: block;
+      right: 5px;
+      bottom: 266px;
+      width: 508px;
+      float: right;
+      height: 180px;
+      border-color: #ddd;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+      visibility: hidden;
+
+
+
+    }
+
+    .customOption-header {
+      /*  add '-header' to specify the style of the option control header */
+      color: #fff;
+      background-color: #7ba6d4;
+      border-color: #ddd;
+      padding: 8px 15px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .customOption-header .title {
+      /*  adding the '.title' class will allow you to specify the style of the title text */
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .customOption-body {
+      /* add '-body' to specify the style of the option control body  */
+      padding: 15px;
+      font-size: 11px;
+      height: 105px;
+      border: 5px solid #ccc;
+    }
+
+    .customOption-body div {
+      /* add '-body div' to specify the style of the option control body's div element */
+      float: left;
+      padding-bottom: 4px;
+      width: 100%;
+    }
+
+    .customOption-body label {
+      /* add '-body label' to specify the style of the option control's body text */
+      font-weight: 700;
+      display: inline-block;
+      width: 34%;
+    }
+
+    .customOption-body select {
+      /* add '-body select' to specify the style of the option control body select boxes */
+      width: 66%;
+    }
+
+    .customOption-body .olProgress {
+      /* add '-body .olProgress' to specify a progress bar */
+      width: 50%;
+    }
+
+    .customOption-body .olDiv {
+      /* add '-body .olDiv' to specify the style of the option control's 'Get Alerts' button */
+      width: 50%;
+    }
+  </style>
+  <script>
+    function init() {
+      ALKMaps.Map.prototype.showLoading = function (evt) {
+        if (this.loadingDiv != null) {
+          this.loadingDiv.style.display = "block";
+        } else {
+          this.showMapLoadingIcon();
+        }
+      };
+
+      ALKMaps.Map.prototype.hideLoading = function (evt) {
+        if (this.loadingDiv != null) {
+          this.loadingDiv.style.display = "none";
+        }
+      };
+
+      ALKMaps.Map.prototype.showMapLoadingIcon = function (
+        id,
+        imgURL,
+        className
+      ) {
+        // id, imgURL, and className are optional.
+        if (imgURL == null) {
+          imgURL = ALKMaps.Util.getImageLocation("loading.gif");
+        }
+        this.loadingDiv = ALKMaps.Util.createDiv(id, null, null, null);
+        this.loadingDiv.style.zIndex = this.Z_INDEX_BASE["Control"];
+        if (className != null) {
+          this.loadingDiv.className = className;
+        } else {
+          this.loadingDiv.className = "alkMapLoadingIcon";
+        }
+        var imgId = null;
+        if (id != null) {
+          imgId = id + "_icon";
+        }
+        var sz = this.getSize();
+        var px = new ALKMaps.Pixel(sz.w / 2, sz.h / 2);
+        var loadingIcon = ALKMaps.Util.createImage(imgId, null, null, imgURL);
+        this.loadingDiv.appendChild(loadingIcon);
+        this.viewPortDiv.appendChild(this.loadingDiv);
+      };
+      ALKMaps.APIKey = "17CA0885B03A6B4FADBDC3D1A51DC0BD"; //You will need to replace this with your own API key
+
+      var map = new ALKMaps.Map("map", {});
+      var layer = new ALKMaps.Layer.BaseMap(
+        "ALK Maps",
+        { style: ALKMaps.STYLE.MONOCHROME, region: "NA" },
+        { displayInLayerSwitcher: false }
+      );
+
+      var center = new ALKMaps.LonLat(-96, 35);
+      center.transform(
+        new ALKMaps.Projection("EPSG:4326"),
+        map.getProjectionObject()
+      );
+      map.setCenter(center, 4);
+
+      //retrieve the DOM elements that are going to be used to house the legend and option controls
+      var legend = document.getElementById("legend");
+      var option = document.getElementById("option");
+
+      var weatherAlerts = new ALKMaps.Layer.WeatherAlerts("Weather Alerts", {
+        legendDisplayClass: "customLegend", //name of custom legend control css class
+        optionDisplayClass: "customOption", //name of custom option control css class
+        externalDivForLegend: legend, //DOM element for legend control
+        externalDivForOption: option, //DOM element for option control
+        refreshInterval: 5, // Weather alerts will be cached for the duration for the interval.
+        bbox: new ALKMaps.Bounds(
+          -20772688.834624,
+          -3219958.0419369,
+          -735180.494624,
+          11808173.213063
+        ) // 173.395761,-27.769612,-6.604239,72.152021
+      });
+      map.addLayers([layer, weatherAlerts]);
+
+      var eventSelect = new ALKMaps.Control.FeatureEvent([weatherAlerts], {
+        geometryTypes: ["ALKMaps.Geometry.Polygon"]
+      });
+      // eventSelect.handlers.feature.stopClick = false;
+      eventSelect.handlers.feature.stopDown = false;
+
+      map.addControl(eventSelect);
+      eventSelect.activate();
+
+      //Display VectorMarker popup on click
+      var clickHandler = function (evt) {
+        evt.feature.layer.selectAlertFeatures(evt.feature, eventSelect, true);
+        return false;
+      };
+      weatherAlerts.events.register("featureclicked", this, clickHandler);
+
+      var toggleSelect = function () {
+        if (eventSelect.active) {
+          //deactivate FeatureEvent control to enable panning over features.
+          eventSelect.deactivate();
+        } else {
+          //activate FeatureEvent control to enable Weather Alert info popups.
+          eventSelect.activate();
+        }
+      };
+
+      //find checkbox and add event listener that calls toggleSelect function on mouse click.
+      var checkbox = document.getElementById("toggle");
+      checkbox.addEventListener("click", toggleSelect, false);
+    }
+  </script>
+
+</head>
+
+<body onload="init()">
+  <div id="example-container">
+    <h1>Weather Alerts Layer Example</h1>
+
+
+
+    <div id="map"></div>
+
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+   
+     </style>
+
+
+
+    <div id="legend" class="customLegend"></div>
+
+    <div id="option" class="customOption"></div>
+
+    <p style="clear: both;"></p>
+
+    <input type="checkbox" id="toggle" checked />Toggle FeatureEvent
+    Control<br />
+  </div>
+</body>
+
+</html>
