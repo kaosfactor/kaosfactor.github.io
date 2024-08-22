@@ -6,7 +6,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="viewport" content="width=660,user-scalable=no" />
-<meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta http-equiv="Permissions-Policy" content="interest-cohort=()">	
   <title>IntelliSTAR Emulator</title>
   <link rel="shortcut icon" type="image/png" href="assets/logos/favicon.jpg"/>
@@ -29,7 +30,7 @@
 
   <link rel="stylesheet" type="text/css" href="css/buttons.css">
  
-  <script defer async src="js/MainScriptX2.js"></script>
+  <script defer async src="js/MainScriptX1.js"></script>
   <script defer async src="js/MobileX2.js" async>></script>
   <script defer async src="js/ConfigX1.js" async></script>
   <script defer async src="js/ConditionsX1.js" async></script>
@@ -51,6 +52,8 @@
 </head>
 
 
+
+
 <body>
 
   <div id="render-frame">
@@ -69,7 +72,7 @@
     <div id="infobar-container">
       <img id="infobar-twc-logo" src="assets/logos/twc.svg" onclick="twcLogoClick();" />
       <img id="infobar-local-logo" src="assets/logos/local.svg" onclick="twcLogoClick();" />
-      <div id="infobar-location-container" class="infobar-item-container" onclick="mapbox();" >
+      <div id="infobar-location-container" class="infobar-item-container" onclick="twc();" >
         <div id="infobar-location-text" class="regular-text infobar-text"></div>
       </div>
       <div id="infobar-time-container" class="infobar-item-container">
