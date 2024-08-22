@@ -123,3 +123,36 @@
   color: #ffffff;
   background-color: #000000;
 }
+
+
+
+
+
+
+.button3{
+  border-color: #3498db;
+  color: #ffffff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+
+        font-size: 8px;
+        position: absolute;
+        left:13px;
+        z-index:1000;
+        float: left;
+        top: 25px;
+        font-size: 10px;
+        width: 70px;
+        height: 20px;
+
+
+    }
+
+
+
+.button3:hover {
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  color: #ffffff;
+  background-color: #000000;
+}
