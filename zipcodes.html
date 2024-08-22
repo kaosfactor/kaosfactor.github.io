@@ -37,17 +37,19 @@ h3 {
     font-size: .5em;
 }
 
-h3 {
-    font-size: .8em;
-    text-align: center;
 
+
+h3 {
+    font-size: 12px;
+    text-align: center;
 }
+
 
 p {
-    font-size: 0.75em;
-    margin: 10px;
+    font-size: 12px;
     text-align: center;
 }
+
 
 #map {
     position: absolute;
@@ -58,56 +60,24 @@ p {
 
 
 
-
-#menu a:last-child {
-    border: none;
-}
-
-#menu a:hover {
-    background-color: #f8f8f8;
-    color: #404040;
-}
-
-
-
-
-
-
 #features {
-    top: 60px;
+    top: 70px;
     height: 35px;
-    margin-top: 35px;
-    margin-right: 10px;
-
-    width: 80px;
+	left: 13px;
+    width: 70px;
 
 }
-
-
 
 
 #menu {
-/*    background: #fff;
-*/    position: absolute;
+
+   position: absolute;
     z-index: 1;
-    top: 60px;
-    right: -40px;
-    
-/*    border-radius: 3px;
-*/    width: 300px;
-/*    border: 1px solid rgba(0, 0, 0, 0.4);
-*/    font-family: 'Open Sans', sans-serif;
+    top: 10px;
+    left: 0px;
+    width: 500px;
+    font-family: 'Open Sans', sans-serif;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -127,57 +97,6 @@ body {
   height: 100%;
   width: 100%;
 }
-
-.vertical-align {
-  display: table-cell;
-  vertical-align: middle;
-/*  height: 100vh;
-*/}
-
-.button-link {
-  text-decoration: none;
-}
-
-
-
-
-
-
-.btns {
-  background-color: white;
-  height: 30px;
-  float: none;
-
-margin-left: 170px;
-
-  width: 80px;
-  max-width: 40%;
-  border-radius: 3px;
-  display: block;
-  box-shadow: 0 2px 4px -1px rgba(25, 25, 25, 0.2);
-}
-
-
-
-
-
-
-.btns input {
-  display: none;
-}
-.btns label {
-  display: table;
-  float: left;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  text-align: center;
-  border-left: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-
-
 
 
 
@@ -199,63 +118,50 @@ margin-left: 170px;
 }
 
 
+.btns{
+  border-color: #3498db;
+  color: #ffffff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
 
-.btns .btn {
+        font-size: 8px;
+        position: absolute;
+        left:13px;
+        z-index:1000;
+        float: left;
+        top: 25px;
+        font-size: 10px;
+        width: 70px;
+        height: 20px;
 
-  font-size: 14px;
-  cursor: pointer;
-  width: 80%;
-  display: table-cell;
-  vertical-align: middle;
-  font-weight: 600;
-  color: black;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  box-shadow: inset 0 30px 20px -20px rgba(255, 255, 255, 0.15);
-  transition: color 250ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+
+    }
+
+
+
+
+.btns:hover {
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  color: #ffffff;
+  background-color: #000000;
 }
 
 
 
 
-
-.btns .btn:hover {
-  box-shadow: inset 0 30px 30px -20px rgba(50, 50, 50, 0.02);
-  transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
-
-
-
-
-}
-.btns .btn:after {
-  content: '\2714';
-  margin-left: -10px;
-  display: inline-block;
-  -webkit-transform: scale(0);
-  transform: scale(0);
-  transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms, -webkit-transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
-  transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms, transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
-  transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms, transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22), -webkit-transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
-}
-.btns .first {
-  border-radius: 40px 0 0 40px;
-}
-.btns .last {
-  border-radius: 0 40px 40px 0;
-}
 
 
 </style>
 
     <!-- -->
     <nav id="menu">
-        <div class="vertical-align">
-            <div class="btns">
+
+            <div >
 
                 <label>
-                    <input name="button-group" class="layer_class" type="radio" value="Zip" onclick="updateLayer(this.value)">
-                        <span class="btn">Zip Codes</span>
-
-                    
+                    <input class="btns" name="button" type="button" value="Zip" onclick="updateLayer(this.value)">
+                        
                 </label>
             </div>
         </div>
