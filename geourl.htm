@@ -12,8 +12,6 @@
  
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
-    <script src='dist/mapbox-gl-inspect.min.js'></script>
-    <link href='dist/mapbox-gl-inspect.css' rel='stylesheet' />
 
 
 
@@ -40,15 +38,15 @@
             "tiles": [
                 'https://maps.api.xweather.com/wgE96YE3scTQLKjnqiMsv_SVG2gQFV8y9DjKR0BRY9wPoSLvrMrIqF9Lq2IYaY/radar/{z}/{x}/{y}/current.png',
             ],
-            "tileSize": 256,
+            "tileSize": 512,
             "attribution": "<a href='https://www.xweather.com/'>Xweather</a>"
         });
         map.addLayer({
             "id": "radar-tiles",
             "type": "raster",
             "source": "xweather-radar",
-            "minzoom": 0,
-            "maxzoom":22
+            "minzoom": 7,
+            "maxzoom":9
         });
     });
 </script>
