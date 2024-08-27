@@ -1,16 +1,12 @@
 window.CONFIG = {
-  crawl: `☁ Welcome to KAOS!!!.... The Intellistar Emulator. ☁`,
-  greeting: 'This is your weather',
-  language: 'en-US', // Supported in TWC API
-  countryCode: 'US', // Supported in TWC API (for postal key)
-  units: 'e', // Supported in TWC API (e = English (imperial), m = Metric, h = Hybrid (UK)),
-  unitField: 'imperial', // Supported in TWC API. This field will be filled in automatically. (imperial = e, metric = m, uk_hybrid = h)
+  language: 'en-US', 
+  countryCode: 'US', 
+  units: 'e', 
+  unitField: 'imperial', 
   loop: false,
   locationMode: "POSTAL",
   secrets: {
-    // Possibly deprecated key: See issue #29
-    // twcAPIKey: 'd522aa97197fd864d36b418f39ebb323'
-    //twcAPIKey: '21d8a80b3d6b444998a80b3d6b1449d3'
+
     twcAPIKey: 'e1f10a1e78da46f5b10a1e78da96f525'
   },
 
@@ -53,12 +49,10 @@ window.CONFIG = {
     })
     console.log(args)
     if (currentLoop) {
-      if (localStorage.getItem('crawlText')) CONFIG.crawl = localStorage.getItem('crawlText')
-      if (localStorage.getItem('greetingText')) CONFIG.greeting = localStorage.getItem('greetingText')
+
       if (localStorage.getItem('countryCode')) CONFIG.countryCode = localStorage.getItem('countryCode')
     } else {
-      if (args.crawlText !== '') CONFIG.crawl = args.crawlText
-      if (args.greetingText !== '') CONFIG.greeting = args.greetingText
+
       if (args.countryCode !== '') CONFIG.countryCode = args.countryCode
       if (args.loop === 'y') CONFIG.loop = true
     }
@@ -78,7 +72,6 @@ window.CONFIG = {
       }
 
     }
-    
     zipCode = args['zip-code'] || localStorage.getItem('zip-code')
     airportCode = args['airport-code'] || localStorage.getItem('airport-code')
     
@@ -88,9 +81,6 @@ window.CONFIG = {
   load: () => {
     let settingsPrompt = getElement('settings-prompt')
 
-
-
-    //<button class="setting-item settings-text" id="submit-button" onclick="checkZipCode();" style="margin-bottom: 10px;">Start</button>-->
     let btn = document.createElement('button')
     btn.classList.add('setting-item', 'settings-text', 'settings-input', 'button')
     btn.id = 'submit-button'

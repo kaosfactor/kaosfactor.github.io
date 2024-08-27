@@ -240,6 +240,15 @@ function fetchRadarImages(){
   //startZoomedRadar();
   //setTimeout(startZoomedRadar, 9000);
 
+function nws() {
+
+  localStorage.setItem('loop', 'y');
+  CONFIG.loop = true;
+
+}
+
+nws();
+
 
 }
 
