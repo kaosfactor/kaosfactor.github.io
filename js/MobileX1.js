@@ -206,7 +206,7 @@ function fetchRadarImages(){
     "agenda": {
     }
   }));
-  radarImage.setAttribute("src", "staticradar1.html");
+  radarImage.setAttribute("src", "alkurl.html?lng=" + longitude + "&lat=" + latitude + "&zoom=8");
   radarImage.style.width = "1230px"
   radarImage.style.height = "740px"
   radarImage.style.marginTop = "-220px"
@@ -227,7 +227,7 @@ function fetchRadarImages(){
       "agenda": {
       }
     }));
-    zoomedRadarImage.setAttribute("src", "staticradar2.html");
+    zoomedRadarImage.setAttribute("src", "alkurl.html?lng=" + longitude + "&lat=" + latitude + "&zoom=11");
     zoomedRadarImage.style.width = "1230px"
     zoomedRadarImage.style.height = "740px"
     zoomedRadarImage.style.marginTop = "-90px"
@@ -240,14 +240,7 @@ function fetchRadarImages(){
   //startZoomedRadar();
   //setTimeout(startZoomedRadar, 9000);
 
-function nws() {
 
-  localStorage.setItem('loop', 'y');
-  CONFIG.loop = true;
-
-}
-
-nws();
 
 
 }
